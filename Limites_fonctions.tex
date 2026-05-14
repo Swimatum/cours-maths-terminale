@@ -1,0 +1,203 @@
+\author{}
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% Paquets pour les mathématiques
+\usepackage{amsmath, amssymb, array}
+
+% Marges
+\usepackage{geometry}
+\geometry{hmargin=2cm, vmargin=2cm}
+
+% Paquet pour les boîtes colorées
+\usepackage[many]{tcolorbox}
+
+% Définition d'un style personnalisé pour les définitions (bleu)
+\newtcolorbox{boiteDef}[1]{
+    colback=blue!5!white,      % Couleur de fond (très clair)
+    colframe=blue!75!black,    % Couleur du contour et du titre
+    title={\textbf{#1}},       % Le titre en gras
+    arc=3mm,                   % Arrondi des coins
+    boxrule=1pt,               % Épaisseur du trait
+    fonttitle=\bfseries        % Police du titre
+}
+
+% Définition d'un style pour les propriétés (rose)
+\newtcolorbox{boiteProp}[1]{
+    colback=pink!5!white,
+    colframe=purple!70!pink, 
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+}
+
+% Définition d'un style pour les rappels (vert)
+\newtcolorbox{boiteRappel}[1]{
+    colback=green!10!white,
+    colframe=green!50!black,  
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+}
+
+% Définition d'un style pour les remarques (jaune)
+\newtcolorbox{boiteRemarque}[1]{
+    colback=yellow!10!white,
+    colframe=yellow!70!black,  
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+}
+
+\renewcommand{\thesection}{\Roman{section}}
+
+\begin{document}
+
+\title{\textbf{Chapitre 5 : Limites de fonctions }}
+\date{}
+\maketitle
+
+\section{Limites en $+\infty$ ou en $-\infty$}
+
+\subsection{Limite infinie en $+\infty$ ou en $-\infty$}
+
+\begin{boiteDef}{Définitions :}
+\begin{itemize}
+    \item Une fonction $f$ a pour limite $+\infty$ en $+\infty$ si tout intervalle de la forme $]A,+\infty[$, avec $A\in\mathbb{R}$, contient toutes les valeurs $f(x)$ pour $x$ suffisamment grand.
+    \newline
+    On note alors $\displaystyle \lim_{x \to +\infty} f(x) = +\infty$ ou $f(x) \to +\infty$.
+    \item Une fonction $f$ a pour limite $-\infty$ en $+\infty$ si tout intervalle de la forme $]-\infty;A[$, avec $A\in\mathbb{R}$, contient toutes les valeurs $f(x)$ pour $x$ suffisamment grand.
+    \newline
+    On note alors $\displaystyle \lim_{x \to +\infty} f(x) = -\infty$ ou $f(x) \to -\infty$.
+\end{itemize}
+\end{boiteDef}
+
+\begin{boiteProp}{Propriété des fonctions de référence :}
+    Les fonctions $x\mapsto \sqrt{x}$, $x\mapsto x$, $x\mapsto x^p$ avec $p\in\mathbb{N}^*$ et $x\mapsto e^x$ ont pour limite $+\infty$ en $+\infty$.
+    \newline
+    En $-\infty$, résultats analogues :
+    \begin{itemize}
+        \item $\displaystyle \lim_{x\to -\infty} x^n = +\infty$ si $n$ est pair 
+        \item $\displaystyle \lim_{x\to -\infty} x^n =-\infty$ si $n$ est impair.
+    \end{itemize}
+\end{boiteProp}
+
+\begin{boiteRemarque}{Remarque :}
+    $x\mapsto \sqrt{x}$ n'est pas définie en $-\infty$ donc cela n'a pas de sens de chercher sa limite en $-\infty$.
+\end{boiteRemarque}
+
+\subsection{Limite finie en $+\infty$ ou en $-\infty$}
+
+\begin{boiteDef}{Définition :}
+    Une fonction $f$ a pour limite $l\in\mathbb{R}$ en $+\infty$ si tout intervalle ouvert contenant $l$ contient toutes les valeurs $f(x)$ pour $x$ suffisamment grand.
+    \newline
+    On note alors $\displaystyle \lim_{x \to +\infty} f(x) = l$ ou $f(x) \to l$.
+\end{boiteDef}
+
+\begin{boiteProp}{Propriétés des fonctions de référence :}
+    Les fonctions $x\mapsto \dfrac{1}{x^n}$ avec $n\in\mathbb{N}^*$ et $x\mapsto \dfrac{1}{\sqrt{x}}$ ont pour limite $0$ en $+\infty$.
+    \newline
+    Les fonctions $x\mapsto \dfrac{1}{x^n}$ avec $n\in\mathbb{N}^*$ ont pour limite $0$ en $-\infty$.
+    \newline
+    Les fonctions $x\mapsto e^x$ ont pour limite $0$ en $-\infty$.
+\end{boiteProp}
+
+\begin{boiteDef}{Définition :}
+    Dans un repère orthogonal, lorsque $\displaystyle \lim_{x\to +\infty} f(x) = l$, alors la courbe représentative de $f$ admet une asymptote horizontale d'équation $y=l$ au voisinage de $+\infty$.
+    \newline
+    Lorsque $\displaystyle \lim_{x\to -\infty} f(x) = l$, alors la courbe représentative de $f$ admet une asymptote horizontale d'équation $y=l$ au voisinage de $-\infty$.
+\end{boiteDef}
+
+\section{Limites en un réel a}
+
+\begin{flushleft}
+    $f$ est une fonction définie sur un ensemble $D_{f}$ (un intervalle ou une réunion d’intervalles).
+    On peut étudier la limite de $f$ en un réel $a$ si $a \in $ $D_{f}$ ou lorsque $f$ est définie au voisinage de $a$ ($a$ est une borne
+    de $D_{f}$).
+\end{flushleft}
+
+\subsection{Limite infine en un réel $a$}
+
+\begin{boiteDef}{Définition :}
+    Une fonction $f$ a pour limite $+\infty$ en $a$ si tout intervalle de la forme $]A,+\infty[$, avec $A\in\mathbb{R}$, contient toutes les valeurs $f(x)$ pour $x$ suffisamment proche de $a$.
+    \newline
+    On note alors $\displaystyle \lim_{x \to a} f(x) = +\infty$ ou $f(x) \to +\infty$.
+\end{boiteDef}
+
+\begin{boiteRemarque}{Remarques :}
+    Graphiquement, on définit de manière analogue une limite $-\infty$ en $a$.
+\end{boiteRemarque}
+
+\begin{boiteDef}{Définition :}
+    Dans un repère orthogonal, lorsque $\displaystyle \lim_{x\to a} f(x) = \infty$, alors la courbe représentative de $f$ admet une asymptote verticale d'équation $x=a$ au voisinage de $a$.
+\end{boiteDef}
+
+\subsection{Limite finie en un réel $a$}
+
+\begin{boiteDef}{Définition :}
+    Une fonction $f$ a pour limite $l\in\mathbb{R}$ en $a$ si tout intervalle ouvert contenant $l$ contient toutes les valeurs $f(x)$ pour $x$ suffisamment proche de $a$.
+    \newline
+    On note alors $\displaystyle \lim_{x \to a} f(x) = l$ ou $f(x) \to l$.
+\end{boiteDef}
+
+\begin{boiteRemarque}{Remarque :}
+    Si $a \in D_f$ et si $f$ admet une limite $l$ en $a$, alors $f(a) = l$.
+\end{boiteRemarque}
+
+\section{Opérations sur les limites}
+
+\subsection{Somme, produit, quotient}
+
+Tous les tableaux vus dans les limites des suites restent valables pour les fonctions.
+
+\subsection{Composition}
+
+\begin{boiteProp}{Propriété :}
+    Si $\displaystyle \lim_{x\to a} f(x) = b$ et si $\displaystyle \lim_{X\to b} g(X) = c$, alors $\displaystyle \lim_{x\to a} g(f(x)) = c$.
+\end{boiteProp}
+
+\subsection{Méthodes et exemples types}
+
+Limites à l'infini : on factorise par ce qui semble être le plus fort.
+Pour la forme $\dfrac{0}{0}$, pour lever l'indétermination, on factorise (avec delta ou autre).
+
+\section{Limites et comparaison}
+
+\subsection{Limite infine}
+
+\begin{boiteProp}{Théorème de comparaison :}
+    Pour $x$ suffisamment grand, si $f(x) \leq g(x)$ et si $\displaystyle \lim_{x\to +\infty} f(x) = +\infty$, alors $\displaystyle \lim_{x\to +\infty} g(x) = +\infty$.
+    \newline
+    De même, pour $x$ suffisamment grand, si $f(x) \leq g(x)$ et si $\displaystyle \lim_{x\to +\infty} g(x) = -\infty$, alors $\displaystyle \lim_{x\to +\infty} f(x) = -\infty$.
+\end{boiteProp}
+
+\subsection{Limite finie}
+
+\begin{boiteProp}{Théorème des gendarmes :}
+    Si $f$, $g$ et $h$ sont trois fonctions et $l$ un nombre réal tel que :
+    \begin{itemize}
+        \item Pour $x$ assez grand, $f(x) \leq g(x) \leq h(x)$
+        \item $\displaystyle \lim_{x\to a} f(x) = l$,
+        \item $\displaystyle \lim_{x\to a} h(x) = l$,
+    \end{itemize}
+    alors $\displaystyle \lim_{x\to a} g(x) = l$.
+\end{boiteProp}
+
+\subsection{Croissances comparées}
+
+\begin{boiteProp}{Théorème des croissances comparées :}
+    $\displaystyle \lim_{x\to +\infty} \dfrac{e^x}{x^n} = +\infty$ pour tout $n\in\mathbb{N}$.
+    \newline
+    $\displaystyle \lim_{x\to -\infty} x^n e^x = 0$ pour tout $n\in\mathbb{N}$.
+    \newline
+    En particulier :
+    \newline
+    $\displaystyle \lim_{x\to +\infty} \dfrac{e^x}{x} = +\infty$.
+    \newline
+    $\displaystyle \lim_{x\to -\infty} x e^x = 0$.
+\end{boiteProp}
+
+
+\end{document}
