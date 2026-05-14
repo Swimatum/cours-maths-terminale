@@ -1,0 +1,266 @@
+\author{}
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% Paquets pour les mathématiques
+\usepackage{amsmath, amssymb, array, physics}
+
+% Marges
+\usepackage{geometry}
+\geometry{hmargin=2cm, vmargin=2cm}
+
+% Paquet pour les boîtes colorées
+\usepackage[many]{tcolorbox}
+
+% Définition d'un style personnalisé pour les définitions (bleu)
+\newtcolorbox{boiteDef}[1]{
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+    fonttitle=\bfseries
+}
+
+% Définition d'un style pour les propriétés (rose)
+\newtcolorbox{boiteProp}[1]{
+    colback=pink!5!white,
+    colframe=purple!70!pink,
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+}
+
+% Définition d'un style pour les rappels (vert)
+\newtcolorbox{boiteRappel}[1]{
+    colback=green!10!white,
+    colframe=green!50!black,
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+}
+
+% Définition d'un style pour les remarques (jaune)
+\newtcolorbox{boiteRemarque}[1]{
+    colback=yellow!10!white,
+    colframe=yellow!70!black,
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+}
+
+\renewcommand{\thesection}{\Roman{section}}
+
+\begin{document}
+
+\title{\textbf{Chapitre 14 : Intégration}}
+\date{}
+\maketitle
+
+\section{Intégrale d'une fonction continue sur un segment}
+
+\subsection{Cas des fonctions positives}
+
+\begin{boiteDef}{Définition :}
+    Dans le plan $P$ muni d'un repère orthogonal ($O$ ; $I$, $J$), on appelle \textbf{unité d'aire}, notée $u.a.$, l'aire du rectangle de côtés $[O,I]$ et $[O,J]$.
+\end{boiteDef}
+
+\begin{boiteDef}{Définition :}
+    Soit $f$ une fonction \textbf{positive} et continue sur un intervalle $I$.
+    \newline
+    Soit $C$ sa courbe représentative dans un repère orthogonal du plan.
+    \newline
+    Soit, enfin, $a$ et $b$ deux éléments de $I$ tels que $a \leq b$.
+    \newline
+    Exprimée en \textbf{unités d'aire}, l'aire de la surface limitée par $C$, l'axe des abscisses et les droites d'équations $x=a$ et $x=b$ est appelée \textbf{intégrale de $f$ entre $a$ et $b$}.
+    \newline
+    On la note : $\displaystyle \int_a^b f(x) \, dx$ et on lit : "intégrale de $a$ à $b$ de $f$ de $x$ dé $x$".
+\end{boiteDef}
+
+\begin{boiteRemarque}{Remarques :}
+    \begin{itemize}
+        \item Le nombre $\displaystyle \int_a^b f(x) \, dx$ ne dépend pas de $x$ : la lettre $x$ peut être remplacée par n'importe quelle autre lettre. On dit que c'est une variable muette.
+        \item Les réels $a$ et $b$ s'appellent les bornes de l'intégrale.
+        \item $\displaystyle \int_a^a f(x) \, dx = 0$ puisque le domaine est réduit aux droites verticales. 
+    \end{itemize}
+\end{boiteRemarque}
+
+\subsection{Fonction de signe quelconque}
+
+\begin{boiteDef}{Définition :}
+    Soit $f$ une fonction \textbf{négative} admettant des primitives sur un intervalle $I$.
+    \newline
+    Soit $C$ sa courbe représentative dans un repère orthogonal du plan.
+    \newline
+    Soit, enfin, $a$ et $b$ deux éléments de $I$ tels que $a \leq b$.
+    \newline
+    L'aire de la surface limitée par $C$, l'axe des abscisses et les droites d'équations $x=a$ et $x=b$ est l'opposé de l'intégrale de $a$ à $b$ de $f$.
+    \newline
+    Si $f$ change de signe sur l'intervalle $[a,b]$, on applique les définitions précédentes sur chaque petit intervalle où $f$ est de signe constant.
+\end{boiteDef}
+
+\section{Intégrales et primitives}
+
+\subsection{Fonctions positives et continues}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ une fonction positive et continue sur $[a,b]$. La fonction $F$ définie par $F(x) = \displaystyle \int_a^x f(t) \, dt$ est une primitive de $f$. C'est la primitive de $f$ qui s'annule en $a$ et $F'(x) = f(x)$.
+\end{boiteProp}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ une fonction définie, continue et postive sur $[a,b]$ et soit $F$ une primitive quelconque de $f$ sur $[a,b]$.
+    \newline
+    Alors : $\displaystyle \int_a^b f(x) \, dx = F(b) - F(a)$.
+\end{boiteProp}
+
+\begin{boiteRemarque}{Remarques :}
+    \begin{itemize}
+        \item $F(b) - F(a)$ se note $[F(x)]_a^b$ : $\displaystyle \int_a^b f(x) \, dx = [F(x)]_a^b = F(b) - F(a)$.
+        \item On dit que l'intégrale ne dépend pas de la primitive choisie.
+    \end{itemize}
+\end{boiteRemarque}
+
+\subsection{Fonctions continues}
+
+On sait que toute fonction continue admet des primitives. 
+
+\begin{boiteDef}{Définition :}
+    Soit $f$ une fonction continue sur un intervalle $I$ et soit $F$ une primitive de $f$ sur $I$. Alors, pour tous réels $a$ et $b$ de $I$ la différence $F(b) - F(a)$ ne dépend pas de la primitive $F$ de la fonction $f$ choisie. On définit l'intégrale de $a$ à $b$ de la fonction $f$ par : 
+    \newline
+    $\displaystyle \int_a^b f(x) \, dx = [F(x)]_a^b = F(b) - F(a)$.
+\end{boiteDef}
+
+\begin{boiteRemarque}{Remarques :}
+    \begin{itemize}
+        \item Dans cette définition, aucune condition de signe de $f$ : $f$ peut être de signe quelconque.
+        \item Dans cette définition, il n'y aucune condition sur les réels $a$ et $b$ : on peut très bien avoir $b < a$.
+        \item Pour une fonction continue et positive avec $a \leq b$, cette définition est cohérente avec la définitioon en termes d'aires.
+    \end{itemize}
+\end{boiteRemarque}
+
+\section{Propriétés de l'intégrale}
+
+\subsection{Propriétés élémentaires}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ une fonction continue sur $[a,b]$ :
+    \begin{itemize}
+        \item $\displaystyle \int_a^a f(x) \, dx = 0$.
+        \item $\displaystyle \int_b^a f(x) \, dx = -\int_a^b f(x) \, dx$.
+    \end{itemize}
+\end{boiteProp}
+
+\subsection{Linéarité}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ et $g$ deux fonctions continues sur $[a,b]$ et soit $k$ un nombre réel.
+    \newline
+    On a :
+    \begin{itemize}
+        \item $\displaystyle \int_a^b [f(x) + g(x)] \, dx = \int_a^b f(x) \, dx + \int_a^b g(x) \, dx$.
+        \item $\displaystyle \int_a^b k f(x) \, dx = k \int_a^b f(x) \, dx$.
+    \end{itemize}
+\end{boiteProp}
+
+\subsection{Positivité et comparaison}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ une fonction \textbf{continue} et \textbf{positive} sur $[a,b]$. 
+    \newline
+    Alors : $\displaystyle \int_a^b f(x) \, dx \geq 0$.
+\end{boiteProp}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ et $g$ deux fonctions continues sur $[a,b]$. 
+    \newline
+    Si $f(x) \leq g(x)$ pour tout $x$ de $[a,b]$ alors $\displaystyle \int_a^b f(x) \, dx \leq \int_a^b g(x) \, dx$.
+\end{boiteProp}
+
+\subsection{Relation de Chasles}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ une fonction continue sur $[a,b]$ et soit un réel $c$ tel que $a \leq c \leq b$. 
+    \newline
+    Alors : $\displaystyle \int_a^b f(x) \, dx = \int_a^c f(x) \, dx + \int_c^b f(x) \,dx$.
+\end{boiteProp}
+
+\subsection{Parité et intégrales}
+
+\begin{boiteProp}{Propriétés :}
+    Soit $f$ une fonction continue sur un intervalle $I$, symétrique par rapport à $0$ et $a$ un réel de $I$.
+    \begin{itemize}
+        \item Si $f$ est paire :
+        \newline
+        $\displaystyle \int_{-a}^0 f(x) \, dx = \int_0^a f(x) \, dx$ d'où $\displaystyle \int_{-a}^a f(x) \, dx = 2 \int_0^a f(x) \, dx$.
+        \item Si $f$ est impaire :
+        \newline
+        $\displaystyle \int_{-a}^0 f(x) \, dx = -\int_0^a f(x) \, dx$ d'où $\displaystyle \int_{-a}^a f(x) \, dx = 0$.       
+    \end{itemize} 
+\end{boiteProp}
+
+\section{Valeur moyenne / Aire entre les deux courbes}
+
+\subsection{Définition}
+
+\begin{boiteDef}{Définition :}
+    Soit $f$ une fonction continue sur $[a,b]$. 
+    \newline
+    La valeur moyenne de $f$ sur $[a,b]$ est le nombre réel $\mu = \displaystyle \frac{1}{b-a} \int_a^b f(x) \, dx$.
+\end{boiteDef}
+
+\begin{boiteRemarque}{Remarques :}
+    \begin{itemize}
+        \item Si $f$ est continue et positive sur $[a,b]$, l'aire sous la courbe de $f$ est égale à l'aire sous la courbe de la fonction constante égale à $\mu$.
+        \item $\mu$ est l'une des deux dimensions du rectangle d'aire $\displaystyle \int_a^b f(x) \, dx$.
+    \end{itemize}    
+\end{boiteRemarque}
+
+\subsection{Aire}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ une fonction continue sur un intervalle $[a,b]$.
+    \newline
+    On se place dans un repère orthogonal $(O;\vec{i},\vec{j})$ du plan. Soit $C_f$ la courbe représentative de $f$ dans ce repère.
+    \newline
+    Soit $A$ l'aire de la surface limitée par $C_f$, l'axe des abscisses et les droites d'équations $x=a$ et $x=b$.
+    \newline
+    \begin{itemize}
+        \item Si $f$ est positive sur $[a,b]$, alors $A = \displaystyle \int_a^b f(t)\,dt$ u.a.
+        \item Si $f$ est négative sur $[a,b]$, alors $A = -\displaystyle \int_a^b f(t)\,dt$ u.a.
+        \item Si $f$ n'est pas de signe constant sur $[a,b]$, alors $A = \displaystyle \int_a^b |f(t)|\,dt$ u.a.
+    \end{itemize}   
+\end{boiteProp}
+
+Le résultat est donné en unités d'aire (u.a.).
+\newline
+1 u.a. $= \norm{\vec{i}} \times \norm{\vec{j}}$ cm².
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ et $g$ deux fonctions continues sur un intervalle $[a,b]$.
+    \newline
+    On se place dans un repère orthogonal $(O;\vec{i},\vec{j})$ du plan. Soit $C_f$ et $C_g$ les courbes représentatives de $f$ et $g$ dans ce repère.
+    \newline
+    Soit $A$ l'aire de la surface limitée par $C_f$, $C_g$, et les droites d'équations $x=a$ et $x=b$.
+    \begin{itemize}
+        \item Si $f(x) \leq g(x)$ pour tout $x$ de $[a,b]$, alors $A = \displaystyle \int_a^b [g(x) - f(x)]\,dx$ u.a.
+        \item Si la fonction $(f-g)$ n'est pas de signe constant sur l'intervalle $[a,b]$, on découpe l'intervalle en intervalles partiels sur lesquels $(f-g)$ est de signe constant et on ajoute les intégrales calculées sur chaque intervalle.
+    \end{itemize}
+\end{boiteProp}
+
+\section{Intégration par parties}
+
+\begin{boiteProp}{Propriété :}
+    Soient $u$ et $v$ deux fonctions dérivables à dérivées continues sur un intervalle $I$ et soient $a$ et $b$ deux réels de $I$.
+    \newline
+    On a : 
+    \newline
+    $\displaystyle \int_a^b u'(x)v(x) \, dx = [u(x)v(x)]_a^b - \int_a^b u(x)v'(x) \, dx$.
+\end{boiteProp}
+
+\section{Suites et intégrales}
+
+Voir exercices.
+
+\end{document}
