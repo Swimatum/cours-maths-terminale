@@ -1,0 +1,273 @@
+\author{}
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% Paquets pour les mathématiques
+\usepackage{amsmath, amssymb, array, physics}
+
+% Marges
+\usepackage{geometry}
+\geometry{hmargin=2cm, vmargin=2cm}
+
+% Paquet pour les boîtes colorées
+\usepackage[many]{tcolorbox}
+
+% Définition d'un style personnalisé pour les définitions (bleu)
+\newtcolorbox{boiteDef}[1]{
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+    fonttitle=\bfseries
+}
+
+% Définition d'un style pour les propriétés (rose)
+\newtcolorbox{boiteProp}[1]{
+    colback=pink!5!white,
+    colframe=purple!70!pink,
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+}
+
+% Définition d'un style pour les rappels (vert)
+\newtcolorbox{boiteRappel}[1]{
+    colback=green!10!white,
+    colframe=green!50!black,
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+}
+
+% Définition d'un style pour les remarques (jaune)
+\newtcolorbox{boiteRemarque}[1]{
+    colback=yellow!10!white,
+    colframe=yellow!70!black,
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+}
+
+\renewcommand{\thesection}{\Roman{section}}
+
+\begin{document}
+
+\title{\textbf{Chapitre 12 : Primitives, équations différentielles}}
+\date{}
+\maketitle
+
+\section{Equation différentielle $y' = f$ et primitives}
+
+\subsection{Lien entre équation différentielle y' = f et primitives}
+
+\begin{boiteRemarque}{Vocabulaire :}
+    \begin{itemize}
+        \item Une équation différentielle est une équation où l'inconnue est une fonction et où interviennent des dérivées de cette fonction.
+        \item Résoudre une équation différentielle, c'est trouver toutes les fonctions solutions de l'équation.
+    \end{itemize}
+\end{boiteRemarque}
+
+\begin{boiteDef}{Définition :}
+    Soit $f$ une fonction définie sur un intervalle $I$. 
+    \newline
+    On dit que $F$ est une primitive de la fonction $f$ sur $I$ si $F$ est dérivable sur l'intervalle $I$ et que pour tout $x$ de $I$, $F'(x) = f(x)$.
+\end{boiteDef}
+
+\begin{boiteRemarque}{Remarques :}
+    \begin{itemize}
+        \item Une primitive de la fonction $f$ sur l'intervalle $I$ est une solution de l'équation différentielle $y' = f$.
+        \item Pour une même fonction, il y a une infinité de primitives.
+        \item $F$ est \textbf{une} primitive de la fonction $f$ sur $I$ signifie que la fonction $f$ est \textbf{la} fonction dérivée de $F$ sur $I$.
+        \item La fonction $f'$ est \textbf{la} fonction dérivée de $f$ sur $I$ signifie que la fonction $f$ est \textbf{une} primitive de $f'$ sur $I$.
+    \end{itemize}   
+\end{boiteRemarque}
+
+\begin{boiteProp}{Propriété :}
+    Toute fonction $f$ continue sur un intervalle $I$ admet des primitives sur $I$.
+\end{boiteProp}
+
+\subsection{Primitives d'une même fonction}
+
+\begin{boiteProp}{Propriétés :}
+    Soit $F$ une primitive de la fonction $f$ sur l'intervalle $I$.
+    \begin{itemize}
+        \item Pour tout réel $k$, la fonction $G : x \mapsto F(x) + k$ est une primitive de la fonction $f$ sur $I$.
+        \item Toute primitive de $f$ sur $I$ est de ce type.
+    \end{itemize}
+\end{boiteProp}
+
+\begin{boiteRemarque}{Remarque :}
+    Si la fonction $H$ est aussi une primitive de la fonction $f$ sur l'intervalle $I$, alors il existe un réel $k$ tel que pour tout $x$ de $I$, $H(x) - F(x) = k$.
+\end{boiteRemarque}
+
+\begin{boiteRemarque}{Vocabulaire}
+    On dit que deux primitives d'une même fonction continue sur un intervalle diffèrent d'une constante
+    \newline
+    L'équation différentielle $y' = f$ a pour solutions toutes les primitives de $f$ sur $I$.    
+\end{boiteRemarque}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ une fonction continue sur $I$.
+    \newline
+    Il existe une unique primitive $G$ de la fonction $f$ sur l'intervalle $I$ telle que : $G(x_0) = y_0$
+    \newline
+    où $x_0$ est un nombre réel donné de $I$ et $y_0$ un nombre réel donné.
+\end{boiteProp}
+
+\section{Formulaire de primitives}
+
+\subsection{Primitives de $f + g$ et de $\lambda f$}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ et $g$ deux fonctions continues sur un intervalle $I$ de primitives respectives $F$ et $G$ sur l'intervalle $I$.
+    \begin{itemize}
+        \item La fonction $(F + G)$ est une primitive de la fonction $(f + g)$ sur l'intervalle $I$.
+        \item $\forall \lambda \in \mathbb{R}$, la fonction $(\lambda F)$ est une primitive de la fonction $(\lambda f)$ sur l'intervalle $I$.
+    \end{itemize}
+\end{boiteProp}
+
+\begin{boiteRemarque}{Remarque :}
+    Aucune propriété sur $F \times G$ ou sur $\frac{F}{G}$.
+\end{boiteRemarque}
+
+\subsection{Primitives des fonctions de référence}
+
+On lit le tableau des dérivées dans l'autres sens.
+\newline
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\renewcommand{\arraystretch}{0.7} % 1.2, 1.5, etc.
+\begin{tabular}{|C{4cm}|C{7cm}|C{4cm}|}
+\hline
+\textbf{Fonction} & \textbf{Primitives} & \textbf{Intervalle $I$} \\
+\hline
+\color{black}{$x \mapsto a$} 
+& \color{black}{$x \mapsto ax + b,\; b \in \mathbb{R}$} 
+& \color{black}{$\mathbb{R}$} \\
+\hline
+\color{black}{$x \mapsto x$} 
+& \color{black}{$x \mapsto \dfrac{1}{2} x^2 + k,\; k \in \mathbb{R}$} 
+& \color{black}{$\mathbb{R}$} \\
+\hline
+\color{black}{$x \mapsto x^2$} 
+& \color{black}{$x \mapsto \dfrac{1}{3} x^3 + k,\; k \in \mathbb{R}$} 
+& \color{black}{$\mathbb{R}$} \\
+\hline
+\color{black}{$x \mapsto x^n,\; n \in \mathbb{Z}^*,\; \newline n \neq -1$}
+& \color{black}{$x \mapsto \dfrac{1}{n+1}x^{n+1} + k,\; k \in \mathbb{R}$}
+& \color{black}{$\mathbb{R}$ si $n>0$} \\
+\hline
+\color{black}{$x \mapsto \dfrac{1}{x^2}$}
+& \color{black}{$x \mapsto -\dfrac{1}{x} + k,\; k \in \mathbb{R}$}
+& \color{black}{$]-\infty;0[ \text{ et } ]0;+\infty[$} \\
+\hline
+\color{black}{$x \mapsto \dfrac{1}{\sqrt{x}}$}
+& \color{black}{$x \mapsto 2\sqrt{x} + k,\; k \in \mathbb{R}$}
+& \color{black}{$]0;+\infty[$} \\
+\hline
+\color{black}{$x \mapsto \dfrac{1}{x}$}
+& \color{black}{$x \mapsto \ln(x) + k,\; k \in \mathbb{R}$}
+& \color{black}{$]0;+\infty[$} \\
+\hline
+\color{black}{$x \mapsto \dfrac{1}{x}$}
+& \color{black}{$x \mapsto \ln(-x) + k,\; k \in \mathbb{R}$}
+& \color{black}{$]-\infty;0[$} \\
+\hline
+\color{black}{$x \mapsto e^x$}
+& \color{black}{$x \mapsto e^x + k,\; k \in \mathbb{R}$}
+& \color{black}{$\mathbb{R}$} \\
+\hline
+\color{black}{$x \mapsto \cos(x)$}
+& \color{black}{$x \mapsto \sin(x) + k,\; k \in \mathbb{R}$}
+& \color{black}{$\mathbb{R}$} \\
+\hline
+\color{black}{$x \mapsto \sin(x)$}
+& \color{black}{$x \mapsto -\cos(x) + k,\; k \in \mathbb{R}$}
+& \color{black}{$\mathbb{R}$} \\
+\hline
+\end{tabular}
+
+\subsection{Primitives et composition}
+
+\begin{boiteProp}{Propriété :}
+    Si $v$ est une fonction dérivable sur un intervalle $J$ et $u$ est une fonction dérivable sur un intervalle $I$ tel que pour tout réel $x \in I$, $u(x) \in J$, alors la fonction $u' \times (v' \circ u)$ admet pour primitive sur $I$ la fonction $v \circ u$.
+\end{boiteProp}
+
+On en déduit le tableau suivant :
+\newline
+
+\begin{tabular}{|C{4cm}|C{7cm}|C{4cm}|}
+\hline
+\textbf{Fonction $f$} 
+& \textbf{Une primitive $F$} 
+& \textbf{Conditions} \\
+\hline
+\color{black}{$u' u^{n}$}
+& \color{black}{$\dfrac{1}{n+1} u^{n+1}$}
+& \color{black}{$n \in \mathbb{Z}^*,\; n \neq -1$} \\
+\color{black}{}
+& \color{black}{}
+& \color{black}{Pour $n < -1$,\, u(x) $\neq 0$ pour tout $x \in I$} \\
+\hline
+\color{black}{$\dfrac{u'}{u^{2}}$}
+& \color{black}{$-\dfrac{1}{u}$}
+& \color{black}{$u(x) \neq 0$ pour tout $x \in I$} \\
+\hline
+\color{black}{$\dfrac{u'}{\sqrt{u}}$}
+& \color{black}{$2 \sqrt{u}$}
+& \color{black}{Pour tout $x \in I$,\, $u(x) > 0$} \\
+\hline
+\color{black}{$u' e^{u}$}
+& \color{black}{$e^{u}$}
+& \color{black}{(aucune condition particulière)} \\
+\hline
+\color{black}{$\dfrac{u'}{u}$}
+& \color{black}{$\ln(u)$}
+& \color{black}{Pour tout $x \in I$,\, $u(x) > 0$} \\
+\hline
+\end{tabular}
+
+
+\section{Equations différentielles}
+
+\subsection{Equations différentielles du type $y' = ay$ où $a \in \mathbb{R^*}$}
+
+\begin{boiteProp}{Propriété :}
+    Les fonctions solutions de l'équation différentielle $y' = ay$ où $a \in \mathbb{R^*}$ sont les fonctions $f_k$ définies sur $\mathbb{R}$ par : $f_k(x) = k e^{ax}$ où $k \in \mathbb{R}$.
+\end{boiteProp}
+
+\subsection{Equation différentielle $y' = ay + b$}
+
+\begin{boiteProp}{Propriété :}
+    Les fonctions solutions de l'équation différentielle $y' = ay + b$ où $a$ et $b$ sont des réels non nuls sont les fonctions $f_k$ définies sur $\mathbb{R}$ par : $f_k(x) = k e^{ax} - \frac{b}{a}$ où $k \in \mathbb{R}$.
+\end{boiteProp}
+
+\subsection{Equation diférentielle $y' = ay + f$ ($f$ fonction, $a$ réel)}
+
+\begin{boiteProp}{Propriété :}
+    Les solutions de l'équation différentielle $y' = ay + f$ où $a$ est un réel non nul et $f$ une fonction sont les fonctions : $x \mapsto k e^{ax} + g(x)$
+    \newline
+    où $g$ est une solution de l'équation différentielle et $k$ une constante réelle.
+\end{boiteProp}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
