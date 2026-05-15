@@ -1,0 +1,336 @@
+\author{}
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% Paquets pour les mathématiques
+\usepackage{amsmath, amssymb, array, physics}
+
+% Marges
+\usepackage{geometry}
+\geometry{hmargin=2cm, vmargin=2cm}
+
+% Paquet pour les boîtes colorées
+\usepackage[many]{tcolorbox}
+
+% Définition d'un style personnalisé pour les définitions (bleu)
+\newtcolorbox{boiteDef}[1]{
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+    fonttitle=\bfseries
+}
+
+% Définition d'un style pour les propriétés (rose)
+\newtcolorbox{boiteProp}[1]{
+    colback=pink!5!white,
+    colframe=purple!70!pink,
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+}
+
+% Définition d'un style pour les rappels (vert)
+\newtcolorbox{boiteRappel}[1]{
+    colback=green!10!white,
+    colframe=green!50!black,
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+}
+
+% Définition d'un style pour les remarques (jaune)
+\newtcolorbox{boiteRemarque}[1]{
+    colback=yellow!10!white,
+    colframe=yellow!70!black,
+    title={\textbf{#1}},
+    arc=3mm,
+    boxrule=1pt,
+}
+
+\renewcommand{\thesection}{\Roman{section}}
+
+\begin{document}
+
+\title{\textbf{Chapitre 7 : Composées, dérivation, continuité}}
+\date{}
+\maketitle
+
+\section{Composées de fonctions}
+
+\subsection{Définition}
+
+\begin{boiteDef}{Définition :}
+    Soit $u$ une fonction définie sur un intervalle $I$ et $v$ une fonction définie sur un intervalle $J$ tel que pour tout $x \in I$, $u(x) \in J$. La fonction composée de $u$ suivie de $v$ est la fonction définie pour tout $x \in I$ par :
+    \newline
+    $(v \circ u)(x) = v(u(x))$
+\end{boiteDef}
+
+\begin{boiteRemarque}{Remarque :}
+    \begin{itemize}
+        \item On lit "v rond u"
+        \item $v \circ u$ est en général différent de $u \circ v$
+        \item On peut composer plusieurs fonctions à la suite : $v \circ u \circ w$ etc.
+        \item On a déjà utilisé les composées dans les limites sans utiliser le symbole $\circ$.
+    \end{itemize}
+\end{boiteRemarque}
+
+\subsection{Dérivation et composées}
+
+\begin{boiteProp}{Propriété :}
+    Soit $u$ une fonction définie sur un intervalle $I$ et $v$ une fonction dérivable sur un intervalle $J$ tel que pour tout $x \in I$, $u(x) \in J$. 
+    \newline
+    Alors la fonction $v \circ u$ est dérivable sur $I$ et pour tout $x \in I$ :
+    \newline
+    $(v \circ u)'(x) = v'(u(x)) \times u'(x)$
+\end{boiteProp}
+
+\begin{boiteRappel}{Rappel :}
+    Soit $g$ une fonction dérivable sur un intervalle $I$ de $\mathbb{R}$ et soient $a$ et $b$ deux réels. Alors la fonction $f:x \mapsto g(ax + b)$ est dérivable sur $I$ et pour tout $x \in I$ : $f'(x) = a \times g'(ax + b)$
+\end{boiteRappel}
+
+\begin{boiteProp}{Conséquences}
+    Soit $u$ une fonction dérivable sur $I$ et $n$ un entier relatif non nul.
+    \begin{itemize}
+         \item La fonction $u^n$ (avec $u(x) \neq 0$ si $n < 0$) est dérivable sur $I$ et $(u^n)'= n \times u' \times u^{n-1}$
+         \item La fonction $\sqrt{u}$ (avec $u(x) > 0$) est dérivable sur $I$ et $(\sqrt{u})' = \frac{u'}{2 \sqrt{u}}$
+         \item La fonction $e^u$ est dérivable sur $I$ et $(e^u)' = u' \times e^{u}$
+    \end{itemize}
+\end{boiteProp}
+
+\section{Convexité}
+
+\subsection{Convexité et lecture graphique}
+
+\begin{boiteDef}{Définition :}
+    $f$ est une fonction définie sur un intervalle $I$. 
+    \newline
+    $C$ est sa courbe représentative sur $I$ dans un repère.
+    \newline
+    \begin{itemize}
+        \item $f$ est convexe sur $I$ si pour tous points $A$ et $B$ (distincts) de $C$, le segment $[AB]$ est au-dessus de la courbe $C$ entre $A$ et $B$.
+        \item $f$ est concave sur $I$ si pour tous points $A$ et $B$ (distincts) de $C$, le segment $[AB]$ est en dessous de la courbe $C$ entre $A$ et $B$.
+    \end{itemize}
+\end{boiteDef}
+
+\begin{boiteRemarque}{Remarques :}
+    \begin{itemize}
+        \item La fonction carrée et la fonction valeur absolue sont convexes sur $\mathbb{R}$.
+        \item La fonction racine carrée est concave sur $\mathbb{R}^+$.
+    \end{itemize}
+\end{boiteRemarque}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ une fonction dérivable sur $I$ et $C$ sa courbe représentative dans un repère.
+    \begin{itemize}
+        \item $f$ est convexe sur $I$ si et seulement si la courbe $C$, sur $I$, est entièrement au-dessus de chacune de ses tangentes.
+        \item $f$ est concave sur $I$ si et seulement si la courbe $C$, sur $I$, est entièrement en dessous de chacune de ses tangentes.
+    \end{itemize}
+\end{boiteProp}
+
+\begin{boiteRemarque}{Remarques :}
+    \begin{itemize}
+        \item La fonction carrée et la fonction exponentielle sont convexes sur $\mathbb{R}$.
+        \item La fonction racine carrée est concave sur $\mathbb{R}^+$.
+    \end{itemize}
+\end{boiteRemarque}
+
+\subsection{Point d'inflexion}
+
+\begin{boiteDef}{Définition :}
+    $f$ est une fonction dérivable sur un intervalle $I$ et $C$ sa courbe représentative dans un repère ; $a \in I$.
+    \newline
+    Le point $A(a, f(a))$ est un point d'inflexion de la courbe $C$ si en $A$, la courbe $C$ traverse sa tangente.
+\end{boiteDef}
+
+\begin{boiteRemarque}{Conséquence :}
+    En $a$, la fonction $f$ passe de concave à convexe ou inversement.    
+\end{boiteRemarque}
+
+\subsection{Convexité et dérivées}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ une fonction dérivable sur un intervalle $I$.
+    \begin{itemize}
+        \item $f$ est convexe sur $I$ si et seulement si $f'$ est croissante sur $I$.
+        \item $f$ est concave sur $I$ si et seulement si $f'$ est décroissante sur $I$.
+    \end{itemize}
+\end{boiteProp}
+
+\begin{boiteDef}{Définition :}
+    Soit $f$ une fonction dérivable sur un intervalle $I$.
+    \newline
+    On dit que $f$ est deux fois dérivable sur $I$ si sa dérivée $f'$ est elle-même dérivable sur $I$. 
+    \newline
+    La fonction dérivée de $f'$, notée $f''$, est appelée fonction dérivée seconde de $f$.
+\end{boiteDef}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ une fonction deux fois dérivable sur un intervalle $I$.
+    \begin{itemize}
+        \item $f$ est convexe sur $I$ si pour tout $x \in I$, $f''(x) \geq 0$.
+        \item $f$ est concave sur $I$ si pour tout $x \in I$, $f''(x) \leq 0$.
+    \end{itemize}
+\end{boiteProp}
+
+\begin{boiteProp}{Propriété :}
+    Si $f''$ est positive alors la courbe représentative de $f$ est au dessus de ses tangentes.    
+\end{boiteProp}
+
+\begin{boiteRemarque}{Remarque :}
+    On peut démontrer des inégalités en utilisant la convexité d'une fonction.
+    \newline
+    On retrouve ainsi que $e^x \geq 1 + x$ pour tout $x \in \mathbb{R}$.
+    \newline
+    En effet, au point d'abcisse $0$, la courbe de la fonction exponentielle admet une tangente d'équation $y = 1 + x$. 
+    \newline
+    $y = f'(0)(x - 0) + f(0) \equiv y = e^0 \times x + e^0 \equiv y = x + 1$
+    \newline
+    $f(x) = e^x$ $f'(x) = e^x$ $f''(x) = e^x > 0$ 
+    \newline
+    La fonction exponentielle vérifie bien $f''(x) > 0$ donc sa courbe est au dessus de ses tangentes.
+    \newline
+    $e^x \geq 1 + x$.    
+\end{boiteRemarque}
+
+\begin{boiteProp}{Propriété :}
+    $f$ est une fonction deux fois dérivable sur $I$ et $C$ est sa courbe représentative dans un repère ; $a \in I$.
+    \newline
+    Le point $A(a, f(a))$ est un point d'inflexion de $C$ si et seulement si $f''$ s'annule en changeant de signe en $a$.    
+\end{boiteProp}
+
+\section{Continuité et théorème des valeurs intermédiaires}
+
+\subsection{Continuité d'une fonction}
+
+\begin{boiteDef}{Définition :}
+    Soit $f$ une fonction définie sur $I$ et $a \in I$.
+    \newline
+    \begin{itemize}
+        \item $f$ est continue en $a$ si $f$ a une limite en $a$ égale à $f(a)$, c'est-à-dire si $\lim_{x \to a} f(x) = f(a)$
+        \item $f$ est continue sur $I$ si $f$ est continue en tout réel $a$ de $I$.
+    \end{itemize}
+\end{boiteDef}
+
+\begin{boiteRemarque}{Vocabulaire :}
+    Si $f$ n'est pas continue en $a$, on dit que $f$ est discontinue en $a$.
+\end{boiteRemarque}
+
+\begin{boiteProp}{Propriétés :}
+    \begin{itemize}
+        \item Les fonctions affines, la fonction carrée, la fonction cube, les fonctions polynômes sont continues sur $\mathbb{R}$.
+        \item La fonction inverse est continue sur $]-\infty;0[$ et $]0;+\infty[$.
+        \item La fonction racine carrée est continue sur $[0;+\infty[$.
+        \item La fonction exponentielle est continue sur $\mathbb{R}$.
+        \item Toute fonction définie sur $I$ et obtenue par opérations ou composition des fonctions précédentes est continue sur $I$.
+        \item Les fonctions rationnelles sont continues sur tout intervalle contenu dans leur ensemble de définition.
+    \end{itemize}
+\end{boiteProp}
+
+\begin{boiteProp}{Propriété :}
+    Soit $f$ une fonction définie sur $I$ et $a \in I$.
+    \begin{itemize}
+        \item Si $f$ est dérivable en $a$, alors $f$ est continue en $a$.
+        \item Si $f$ est dérivable sur $I$, alors $f$ est continue sur $I$.
+    \end{itemize}
+\end{boiteProp}
+
+\begin{boiteRemarque}{Remarque :}
+    La réciproque de la propriété précédente est fausse : une fonction peut être continue en $a$ sans être dérivable en $a$. 
+\end{boiteRemarque}
+
+\subsection{Théorème des valeurs intermédiaires}
+
+\begin{boiteRappel}{Convention :}
+    Une flèche dans un tableau de variations d'une fonction $f$ indique :
+    \begin{itemize}
+        \item la stricte croissance ou stricte décroissance de $f$ sur l'intervalle correspondant
+        \item la continuité de la fonction $f$ sur cet intervalle
+    \end{itemize}    
+\end{boiteRappel}
+
+\begin{boiteProp}{Théorème des valeurs intermédiaires :}
+    Soit une fonction $f$ définie et dérivable sur un intervalle $I$ et soient $a$ et $b$ deux éléments de $I$ avec $a < b$.
+    \newline
+    Pour tout nombre réel $k$ compris entre $f(a)$ et $f(b)$, l'équation $f(x) = k$ admet au moins une solution sur l'intervalle $I$.
+    \newline
+    Autrement dit, pour tout réel $k$ compris entre $f(a)$ et $f(b)$, il existe au moins un réel $c$ tel que $f(c) = k$.
+\end{boiteProp}
+
+\begin{boiteRemarque}{Remarques :}
+    Graphiquement, pour tout réel $k$ compris entre $f(a)$ et $f(b)$, la droite d'équation $y = k$ coupe au moins une fois la courbe représentative de $f$.
+    \newline
+    Le TVI est un théorème d'existence : il affirme l'existence d'au moins une solution d'une équation $f(x) = k$ mais il ne permet pas de connaître le nombre exact de solutions (ni leur valeur exacte).
+    \newline
+    On va obtenir des valeurs approchées de ces solutions (si on ne peut pas résoudre algébriquement ces équations).
+\end{boiteRemarque}
+
+\begin{boiteProp}{Corollaire du théorème des valeurs intermédiaires :}
+    Si $f$ est continue et strictement monotone sur un intervalle $[a; b]$, alors pour tout réel $k$ compris entre $f(a)$ et $f(b)$, l'équation $f(x) = k$ admet une unique solution dans l'intervalle $[a; b]$.
+\end{boiteProp}
+
+\begin{boiteDef}{Conséquence :}
+    Si $f$ est continue et strictement monotone sur $[a; b]$ et si $f(a) \times f(b) < 0$, alors l'équation $f(x) = 0$ admet une unique solution sur $[a; b]$.
+\end{boiteDef}
+
+\begin{boiteRemarque}{Remarque :}
+    On parle d'intervalle fermé $[a; b]$ mais on peut avoir une (ou les deux) bornes infinies.
+\end{boiteRemarque}
+
+\section{Fonctions continues et suites convergentes}
+
+\subsection{Image d'une suite par une fonction}
+
+\begin{boiteDef}{Définition :}
+    Soit $(u_n)$ une suite définie sur $\mathbb{N}$.
+    \newline
+    Soit $f$ une fonction définie sur un intervalle $I$ contenat tous les termes $u_n$ de la suite.
+    \newline
+    L'image de la suite $(u_n)$ par la fonction $f$ est la suite $(f(u_n))$.
+\end{boiteDef}
+
+\subsection{Image d'une suite convergente par une fonction continue}
+
+\begin{boiteProp}{Propriété :}
+    Soit $(u_n)$ une suite qui converge vers un nombre réel $l$.
+    \newline
+    $I$ est un intervalle tel que $l \in I$ et pour tout entier naturel $n$, $u_n \in I$.
+    \newline
+    Pour toute fonction $f$ définie sur l'intervalle $I$ et continue en $l$, la suite $(f(u_n))$ converge vers le réel $f(l)$.
+\end{boiteProp}
+
+\subsection{Suites du type : $u_{n+1} = f(u_n)$}
+
+\begin{flushleft}
+    f est une fonction définie et continue sur un intervalle $I$ tel que pour tout réel $x \in I$, $f(x) \in I$.
+    \newline
+    $(u_n)$ est la suite définie par la donnée de $u_0 \in I$ et pour tout entier naturel $n$, $u_{n+1} = f(u_n)$.
+    \newline
+    Lorsque la suite $(u_n)$ converge vers un réel $l$, la suite $f(u_n)$ converge vers le réel $f(l)$.
+    \newline
+    On a : $\displaystyle \lim_{n \to +\infty} f(u_n) = f(l)$, c'est à dire : $\displaystyle \lim_{n \to +\infty} u_{n+1} = f(l)$
+    \newline
+    Or $\displaystyle \lim_{n \to +\infty} u_{n} = l$, donc $\displaystyle \lim_{n \to +\infty} u_{n+1} = l$.
+    \newline
+    L'unicité de la limitepermet donc d'affirmer que $f(l) = l$.
+    \newline
+    On peut conclure que si la suite $(u_n)$ converge vers un réel $l$ de $I$ et si $f$ est continue sur $I$ (donc en particulier en $l$), alors $l = f(l)$.
+    \newline
+    $l$ est donc solution dans $I$ de l'équation $f(x) = x$.
+\end{flushleft}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
